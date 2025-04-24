@@ -29,8 +29,10 @@ jobs:
           node-version: '20'
           
       - name: Install Node.js dependencies
-        run: npm install
-        
+        run: |
+          npm install
+          npm install -g postcss postcss-cli
+          
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -40,6 +42,15 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
+        
+      - name: Create CSS directory
+        run: mkdir -p assets/css
+        
+      - name: Create main.scss
+        run: |
+          echo "@import 'tailwindcss/base';" > assets/css/main.scss
+          echo "@import 'tailwindcss/components';" >> assets/css/main.scss
+          echo "@import 'tailwindcss/utilities';" >> assets/css/main.scss
         
       - name: Build with Jekyll
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"

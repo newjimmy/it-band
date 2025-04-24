@@ -18,34 +18,28 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: IT Solutions & Project Management
-email: info@itsolutions.com
-phone: +1 (123) 456-7890
-description: >-
-  Expert IT solutions and professional project management services for your business needs.
-  We provide cutting-edge technical solutions and professional project management services.
-baseurl: "/it-band" # the subpath of your site, e.g. /blog
-url: "https://newjimmy.github.io" # the base hostname & protocol for your site
-github_username: newjimmy
-linkedin_username: your-linkedin
-twitter_username: your-twitter
+title: IT Band
+description: IT Solutions and Services
+baseurl: "/it-band"
+url: ""
 
 # Build settings
-theme: minima
+markdown: kramdown
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-postcss
 
-# Exclude from processing
+sass:
+  style: compressed
+
 exclude:
-  - .sass-cache/
-  - .jekyll-cache/
-  - gemfiles/
+  - node_modules
+  - package.json
+  - package-lock.json
+  - README.md
   - Gemfile
   - Gemfile.lock
-  - node_modules/
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
-  - backup/
+  - postcss.config.js
+  - tailwind.config.js
+  - .gitignore
