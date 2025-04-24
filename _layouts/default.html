@@ -7,49 +7,57 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
-    <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
     <link rel="shortcut icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
     {% seo %}
+    <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
 </head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">IT Solutions</div>
+<body class="min-h-screen bg-gray-50">
+    <header class="bg-white shadow-sm">
+        <nav class="container mx-auto px-4 py-4">
+            <a href="{{ '/' | relative_url }}" class="logo">IT Solutions</a>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="{{ '/' | relative_url }}">Home</a></li>
+                <li><a href="{{ '/services' | relative_url }}">Services</a></li>
+                <li><a href="{{ '/about' | relative_url }}">About Us</a></li>
+                <li><a href="{{ '/contact' | relative_url }}">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    {{ content }}
+    <main class="container mx-auto px-4 py-8">
+        {{ content }}
+    </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Info</h3>
-                <p>Email: info@itsolutions.com</p>
-                <p>Phone: +1 (123) 456-7890</p>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+    <footer class="bg-secondary text-white mt-auto">
+        <div class="container mx-auto px-4 py-6">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Email: info@itsolutions.com</p>
+                    <p>Phone: +1 (123) 456-7890</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; {{ site.time | date: '%Y' }} IT Solutions. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p class="text-center">&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
+            </div>
         </div>
     </footer>
-
-    <script src="{{ '/script.js' | relative_url }}"></script>
 </body>
 </html> 
