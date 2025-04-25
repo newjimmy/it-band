@@ -30,14 +30,23 @@ if (contactForm) {
     });
 }
 
-// Add scroll-based header styling
-window.addEventListener('scroll', function() {
+// Handle header scroll behavior
+document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-        header.style.background = 'rgba(255, 255, 255, 0.95)';
-    } else {
-        header.style.background = '#fff';
-    }
+    console.log('Header element:', header); // Debug log
+    
+    const handleScroll = () => {
+        console.log('Scroll position:', window.scrollY); // Debug log
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    // Initial call to set correct state
+    handleScroll();
 });
 
 document.addEventListener('DOMContentLoaded', function() {
