@@ -6,6 +6,7 @@
     <title>Contact - IT Solutions</title>
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
 </head>
 <body>
     <header>
@@ -25,10 +26,11 @@
         </nav>
     </header>
 
-    <section class="contact" style="margin-top: 80px; min-height: 100vh;">
-        <h2>Contact Us</h2>
-        <div class="contact-content" style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
-            <div class="contact-info" style="margin-bottom: 2rem; text-align: center;">
+    <main class="contact" style="margin-top: 80px;">
+        <div class="contact-content">
+            <h2>Contact Us</h2>
+            
+            <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
                     <h3>Email</h3>
@@ -46,14 +48,14 @@
                 </div>
             </div>
             
-            <form id="contact-form" class="contact-form">
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <textarea name="message" placeholder="Message" required></textarea>
+            <form class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
                 <button type="submit" class="cta-button">Send Message</button>
             </form>
         </div>
-    </section>
+    </main>
 
     <script src="assets/js/main.js"></script>
 </body>
