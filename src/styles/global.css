@@ -11,6 +11,16 @@
   --green: #4ff0a3;
   --amber: #f5b84b;
   --max: 1180px;
+  --text-title: clamp(2.4rem, 4vw, 4.1rem);
+  --text-section: clamp(1.75rem, 2.6vw, 2.4rem);
+  --text-card: 1.25rem;
+  --text-lead: 1.05rem;
+  --text-body: 1rem;
+  --text-meta: 0.875rem;
+  --text-label: 0.78rem;
+  --leading-title: 1.08;
+  --leading-heading: 1.3;
+  --leading-body: 1.6;
 }
 
 * {
@@ -32,7 +42,8 @@ body {
   color: var(--text);
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.5;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
 }
 
 a {
@@ -149,9 +160,7 @@ img {
 }
 
 .overview-page h1 {
-  font-size: clamp(3rem, 5.5vw, 4.6rem);
   max-width: 800px;
-  line-height: 1.08;
 }
 
 .heading-line {
@@ -166,14 +175,8 @@ img {
   margin-bottom: 48px;
 }
 
-.recovery .section-heading h1 {
-  font-size: clamp(2.3rem, 3.3vw, 3.5rem);
-  line-height: 1.08;
-}
-
 .advisory-focus h2 {
-  font-size: 1.2rem;
-  line-height: 1.3;
+  font-size: var(--text-card);
 }
 
 .experience-technologies {
@@ -188,16 +191,12 @@ img {
   border: 1px solid var(--line);
   border-radius: 5px;
   color: var(--cyan);
-  font-size: 0.78rem;
+  font-size: var(--text-meta);
 }
 
 .overview {
   padding-top: 60px;
   padding-bottom: 60px;
-}
-
-.overview .section-heading h2 {
-  font-size: clamp(2rem, 3.2vw, 2.8rem);
 }
 
 .overview .section-heading p:not(.eyebrow) {
@@ -229,7 +228,7 @@ img {
 
 .overview-label {
   color: var(--cyan);
-  font-size: 0.72rem;
+  font-size: var(--text-label);
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -241,20 +240,20 @@ img {
 }
 
 .overview-card h3 {
-  font-size: 1.35rem;
+  font-size: var(--text-card);
   margin-bottom: 10px;
 }
 
 .overview-card p {
   color: var(--muted);
-  font-size: 0.98rem;
+  font-size: var(--text-body);
   margin-bottom: 18px;
 }
 
 .overview-action {
   margin-top: auto;
   color: var(--green);
-  font-size: 0.9rem;
+  font-size: var(--text-meta);
   font-weight: 750;
 }
 
@@ -268,8 +267,6 @@ img {
 
 .detail-main h1 {
   max-width: 850px;
-  font-size: clamp(2.4rem, 4vw, 4.1rem);
-  line-height: 1.02;
   margin-bottom: 22px;
 }
 
@@ -286,7 +283,7 @@ img {
   border-radius: 999px;
   padding: 8px 14px;
   color: #d8e4ea;
-  font-size: 0.88rem;
+  font-size: var(--text-meta);
 }
 
 .page-toc a:hover {
@@ -296,7 +293,8 @@ img {
 
 .recovery-options-heading,
 .recovery-process,
-.recovery-guardrails {
+.recovery-guardrails,
+.page-anchor {
   scroll-margin-top: 120px;
 }
 
@@ -312,6 +310,7 @@ img {
 }
 
 .page-next h3 {
+  font-size: var(--text-card);
   margin-bottom: 8px;
 }
 
@@ -332,13 +331,13 @@ img {
 }
 
 .site-footer strong {
-  font-size: 1.18rem;
+  font-size: var(--text-card);
 }
 
 .site-footer p {
   color: var(--muted);
   margin: 8px 0 0;
-  font-size: 0.92rem;
+  font-size: var(--text-meta);
 }
 
 .site-footer p a:hover,
@@ -355,7 +354,7 @@ img {
 
 .footer-home {
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: var(--text-meta);
 }
 
 .hero {
@@ -398,7 +397,7 @@ img {
 .service-eyebrow {
   margin: 0 0 14px;
   color: var(--green);
-  font-size: 0.78rem;
+  font-size: var(--text-label);
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -414,15 +413,20 @@ p {
 h1 {
   max-width: 880px;
   margin-bottom: 22px;
-  font-size: clamp(3rem, 6vw, 5.4rem);
-  line-height: 0.94;
+  font-size: var(--text-title);
+  line-height: var(--leading-title);
   letter-spacing: 0;
+}
+
+h2,
+h3 {
+  line-height: var(--leading-heading);
 }
 
 .hero-copy {
   max-width: 720px;
   color: #cfdae0;
-  font-size: clamp(1.08rem, 2vw, 1.35rem);
+  font-size: var(--text-lead);
 }
 
 .hero-actions {
@@ -439,6 +443,8 @@ h1 {
   justify-content: center;
   border-radius: 8px;
   padding: 0 18px;
+  font: inherit;
+  line-height: var(--leading-heading);
   font-weight: 800;
 }
 
@@ -463,12 +469,12 @@ h1 {
 
 .recovery-entry {
   margin-top: 22px;
-  font-size: 0.94rem;
+  font-size: var(--text-body);
 }
 
 .inline-link {
   margin-top: 14px;
-  font-size: 0.94rem;
+  font-size: var(--text-body);
 }
 
 .recovery-entry:hover,
@@ -504,7 +510,7 @@ summary:focus-visible {
   padding: 14px;
   background: rgba(7, 10, 13, 0.78);
   color: #dbe8ee;
-  font-size: 0.92rem;
+  font-size: var(--text-meta);
   font-weight: 750;
   text-align: center;
   backdrop-filter: blur(12px);
@@ -517,6 +523,46 @@ summary:focus-visible {
 .section-heading {
   width: min(var(--max), 100%);
   margin: 0 auto 34px;
+}
+
+.page-intro {
+  display: block;
+}
+
+.page-intro .eyebrow {
+  color: var(--green);
+  margin-bottom: 14px;
+}
+
+.page-intro h1 {
+  margin-bottom: 22px;
+}
+
+.page-intro-heading {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  grid-template-areas: "mascot eyebrow" "mascot title";
+  column-gap: 24px;
+  row-gap: 14px;
+  margin-bottom: 22px;
+}
+
+.page-intro-mascot {
+  grid-area: mascot;
+  align-self: center;
+  width: 120px;
+  height: 120px;
+}
+
+.page-intro-heading .eyebrow {
+  grid-area: eyebrow;
+  align-self: end;
+  margin: 0;
+}
+
+.page-intro-heading h1 {
+  grid-area: title;
+  margin: 0;
 }
 
 .section-heading.wide {
@@ -536,15 +582,15 @@ summary:focus-visible {
 .contact-section h2 {
   max-width: 850px;
   margin-bottom: 0;
-  font-size: clamp(2rem, 4vw, 4.1rem);
-  line-height: 1;
+  font-size: var(--text-section);
+  line-height: var(--leading-heading);
   letter-spacing: 0;
 }
 
 .section-heading p:not(.eyebrow),
 .contact-section p {
   color: var(--muted);
-  font-size: 1.05rem;
+  font-size: var(--text-lead);
 }
 
 .problems {
@@ -584,7 +630,7 @@ summary:focus-visible {
   display: block;
   margin-bottom: 42px;
   color: var(--cyan);
-  font-size: 0.82rem;
+  font-size: var(--text-label);
   font-weight: 900;
 }
 
@@ -596,7 +642,7 @@ summary:focus-visible {
 .engagement-grid h2,
 .engagement-grid h3 {
   margin-bottom: 10px;
-  font-size: 1.16rem;
+  font-size: var(--text-card);
 }
 
 .problem-grid p,
@@ -638,7 +684,7 @@ summary:focus-visible {
 .cloud-label {
   margin-bottom: 18px;
   color: var(--cyan);
-  font-size: 0.82rem;
+  font-size: var(--text-label);
   font-weight: 900;
   letter-spacing: 0.08em;
 }
@@ -652,7 +698,7 @@ summary:focus-visible {
 }
 
 .cloud-card h3 {
-  font-size: 1.3rem;
+  font-size: var(--text-card);
 }
 
 .cloud-card p:not(.cloud-label),
@@ -705,10 +751,6 @@ summary:focus-visible {
     #0a0f14;
 }
 
-.recovery .eyebrow {
-  color: var(--amber);
-}
-
 .recovery-brief,
 .recovery-options-heading,
 .recovery-grid,
@@ -735,10 +777,14 @@ summary:focus-visible {
 }
 
 .recovery-brief h2,
-.recovery-options-heading h2,
-.recovery-process > h2,
 .recovery-guardrails h2 {
-  font-size: 1.2rem;
+  font-size: var(--text-card);
+  margin-bottom: 12px;
+}
+
+.recovery-options-heading h2,
+.recovery-process > h2 {
+  font-size: var(--text-section);
   margin-bottom: 12px;
 }
 
@@ -763,7 +809,7 @@ summary:focus-visible {
 
 .recovery-brief-note span {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: var(--text-body);
 }
 
 .recovery-options-heading {
@@ -801,18 +847,18 @@ summary:focus-visible {
 .recovery-number,
 .process-number {
   color: var(--amber);
-  font-size: 0.84rem;
+  font-size: var(--text-label);
   font-weight: 900;
 }
 
 .recovery-card-top p {
   margin: 0;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: var(--text-meta);
 }
 
 .recovery-card h3 {
-  font-size: 1.6rem;
+  font-size: var(--text-card);
   margin-bottom: 10px;
 }
 
@@ -836,13 +882,13 @@ summary:focus-visible {
   padding-top: 16px;
   border-top: 1px solid var(--line);
   color: var(--green);
-  font-size: 0.84rem;
+  font-size: var(--text-meta);
   font-weight: 700;
 }
 
 .recovery-scope-note {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: var(--text-meta);
   margin-top: 22px;
   margin-bottom: 40px;
 }
@@ -863,11 +909,11 @@ summary:focus-visible {
 
 .recovery-process h3 {
   margin: 12px 0 8px;
-  font-size: 1rem;
+  font-size: var(--text-card);
 }
 
 .recovery-process p {
-  font-size: 0.93rem;
+  font-size: var(--text-body);
 }
 
 .recovery-guardrails {
@@ -885,7 +931,7 @@ summary:focus-visible {
 }
 
 .recovery-guardrails .recovery-service-note {
-  font-size: 0.82rem;
+  font-size: var(--text-meta);
   margin-top: 14px;
 }
 
@@ -896,7 +942,7 @@ summary:focus-visible {
 
 .engagement-footer p {
   margin-bottom: 0;
-  font-size: 0.94rem;
+  font-size: var(--text-body);
 }
 
 .work {
@@ -946,7 +992,7 @@ summary:focus-visible {
 .engagement-grid article p {
   margin-bottom: 56px;
   color: var(--amber);
-  font-size: 0.82rem;
+  font-size: var(--text-label);
   font-weight: 900;
 }
 
@@ -964,7 +1010,7 @@ summary:focus-visible {
   padding: 9px 12px;
   background: rgba(255, 255, 255, 0.045);
   color: #d7e6eb;
-  font-size: 0.92rem;
+  font-size: var(--text-meta);
 }
 
 .contact-section {
@@ -1001,12 +1047,17 @@ summary:focus-visible {
   color: var(--green);
 }
 
+.detail-page,
 .inquiry-page {
   min-height: 100vh;
   background:
     radial-gradient(circle at 18% 0%, rgba(57, 215, 255, 0.18), transparent 32%),
     radial-gradient(circle at 86% 8%, rgba(79, 240, 163, 0.13), transparent 30%),
     var(--bg);
+}
+
+.detail-main > .section:first-child {
+  background: transparent;
 }
 
 .inquiry-shell {
@@ -1021,14 +1072,13 @@ summary:focus-visible {
 }
 
 .inquiry-hero h1 {
-  max-width: 900px;
-  font-size: clamp(2.55rem, 6vw, 5.7rem);
+  max-width: 850px;
 }
 
 .inquiry-hero p:not(.eyebrow) {
   max-width: 760px;
   color: var(--muted);
-  font-size: 1.08rem;
+  font-size: var(--text-lead);
 }
 
 .inquiry-layout {
@@ -1065,7 +1115,7 @@ summary:focus-visible {
 
 .inquiry-form label span {
   color: #dce8ed;
-  font-size: 0.86rem;
+  font-size: var(--text-meta);
   font-weight: 800;
 }
 
@@ -1106,7 +1156,7 @@ summary:focus-visible {
 .form-note {
   margin: 0;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: var(--text-meta);
 }
 
 .inquiry-aside {
@@ -1117,7 +1167,7 @@ summary:focus-visible {
 
 .inquiry-aside h2 {
   margin-bottom: 18px;
-  font-size: 1.35rem;
+  font-size: var(--text-card);
 }
 
 .inquiry-aside ul {
@@ -1218,6 +1268,29 @@ summary:focus-visible {
 }
 
 @media (max-width: 560px) {
+  :root {
+    --text-title: clamp(2rem, 8.5vw, 2.8rem);
+    --text-section: clamp(1.6rem, 6.5vw, 2rem);
+    --text-lead: 1rem;
+    --text-label: 0.7rem;
+  }
+
+  .page-intro-heading {
+    grid-template-columns: 72px minmax(0, 1fr);
+    grid-template-areas: "mascot eyebrow" "title title";
+    column-gap: 16px;
+    row-gap: 12px;
+  }
+
+  .page-intro-mascot {
+    width: 72px;
+    height: 72px;
+  }
+
+  .page-intro-heading .eyebrow {
+    align-self: center;
+  }
+
   .site-header {
     position: sticky;
     top: 8px;
@@ -1270,10 +1343,6 @@ summary:focus-visible {
     padding-top: 32px;
   }
 
-  .overview-page h1 {
-    font-size: clamp(2rem, 10.5vw, 3.05rem);
-  }
-
   .overview-grid {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -1283,24 +1352,12 @@ summary:focus-visible {
     padding: 18px;
   }
 
-  .overview-card h3 {
-    font-size: 1.2rem;
-  }
-
-  .overview-card p {
-    font-size: 0.94rem;
-  }
-
   .detail-main {
     padding-top: 0;
   }
 
   .detail-main > .section:first-child {
     padding-top: 36px;
-  }
-
-  .detail-main h1 {
-    font-size: clamp(2rem, 8.5vw, 2.8rem);
   }
 
   .site-footer,
@@ -1335,19 +1392,7 @@ summary:focus-visible {
 
   .eyebrow,
   .service-eyebrow {
-    font-size: 0.7rem;
     line-height: 1.35;
-  }
-
-  h1 {
-    font-size: clamp(2rem, 10.5vw, 3.05rem);
-    line-height: 1;
-  }
-
-  .hero-copy,
-  .section-heading p:not(.eyebrow),
-  .contact-section p {
-    font-size: 0.98rem;
   }
 
   .hero-actions {
@@ -1369,10 +1414,6 @@ summary:focus-visible {
     padding: 56px 0 32px;
   }
 
-  .inquiry-hero h1 {
-    font-size: clamp(2.25rem, 12vw, 3.45rem);
-  }
-
   .form-row {
     grid-template-columns: 1fr;
   }
@@ -1390,10 +1431,6 @@ summary:focus-visible {
   .recovery-card,
   .recovery-guardrails {
     padding: 20px;
-  }
-
-  .recovery-entry {
-    font-size: 0.88rem;
   }
 
   .inquiry-form,
@@ -1415,7 +1452,7 @@ summary:focus-visible {
     border: 1px solid var(--line);
     border-radius: 8px;
     padding: 9px 10px;
-    font-size: 0.78rem;
+    font-size: var(--text-meta);
   }
 
   .proof-strip span:last-child:nth-child(odd) {

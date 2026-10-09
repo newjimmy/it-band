@@ -22,6 +22,11 @@ npm run preview
 
 Build output is generated in `dist/`.
 
+Every build first runs `npm run security`. It fails on any reported low, moderate,
+high or critical npm vulnerability, including transitive dependencies. Commit
+`package-lock.json` after dependency updates so local, CI and Cloudflare builds
+use the same audited versions.
+
 ## Deployment
 
 Hosting is Cloudflare Pages; GitHub stores the source. `.github/workflows/deploy.yml` validates builds only and does not publish to GitHub Pages.

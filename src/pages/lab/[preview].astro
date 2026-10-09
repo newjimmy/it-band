@@ -1,0 +1,117 @@
+---
+import '../../styles/global.css';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import TechMascot from '../../components/TechMascot.astro';
+
+// Design experiments are available locally, never emitted into the published site.
+export function getStaticPaths() {
+  return import.meta.env.DEV ? [{ params: { preview: 'mascots' } }] : [];
+}
+
+const concepts = [
+  { kind: 'relay' as const, name: 'Stack Rover', text: 'Робот-сервер на гусеницях: сканує стан системи, блимає індикаторами та рухає маніпулятором', tag: 'Infrastructure · Support' },
+  { kind: 'fox' as const, name: 'Circuit Fox', text: 'Кіберлисиця з мікросхемою: рухає хвостом, по якому проходить сигнал', tag: 'Architecture · Problem solving' },
+  { kind: 'whale' as const, name: 'Cloud Whale', text: 'Хмарний кит: плавно пливе над трьома з’єднаними обчислювальними вузлами', tag: 'Cloud · Hybrid platforms' },
+  { kind: 'octopus' as const, name: 'Deploy Octopus', text: 'Мережевий восьминіг: керує кількома вузлами й перевіряє їхній стан', tag: 'Delivery · Orchestration' },
+  { kind: 'drone' as const, name: 'Orbit Drone', text: 'Дрон із сенсором: стежить за пакетами, які рухаються орбітами навколо нього', tag: 'Networking · Observability' },
+];
+---
+
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>IT Band | Character concepts (local preview)</title>
+  </head>
+  <body class="detail-page">
+    <a class="skip-link" href="#main-content">Перейти до варіантів</a>
+    <SiteHeader />
+    <main id="main-content" class="detail-main mascot-lab">
+      <section class="section" aria-labelledby="mascot-lab-title">
+        <div class="section-heading page-intro">
+          <p class="eyebrow">Local design preview · Not published</p>
+          <h1 id="mascot-lab-title">П’ять IT-персонажів для IT Band</h1>
+          <p>Власні векторні дизайни. Вибери варіант, щоб побачити його біля заголовка. Персонажі вже розміщені на п’яти основних сторінках у локальному перегляді.</p>
+        </div>
+
+        <section class="mascot-title-preview" aria-label="Приклад персонажа поруч із заголовком">
+          <div class="mascot-title-row">
+            <div class="mascot-hero-stage">
+              {concepts.map((concept, index) => <div class="mascot-hero-choice" data-mascot-hero={concept.kind} hidden={index !== 0}>
+                <TechMascot kind={concept.kind} instance={`hero-${concept.kind}`} />
+              </div>)}
+            </div>
+            <div class="mascot-sample-copy">
+              <p class="eyebrow">Services</p>
+              <h2>From architecture decisions<br />to production delivery</h2>
+            </div>
+          </div>
+          <div class="mascot-preview-controls">
+            <p aria-live="polite">У прикладі: <strong id="selected-mascot">Stack Rover</strong></p>
+            <button type="button" class="button secondary" id="mascot-motion" aria-pressed="false">Призупинити анімації</button>
+          </div>
+        </section>
+
+        <div class="mascot-concept-grid">
+          {concepts.map((concept, index) => <article class="mascot-concept">
+            <div class="mascot-card-stage"><TechMascot kind={concept.kind} instance={`card-${concept.kind}`} /></div>
+            <p class="mascot-concept-tag">{concept.tag}</p>
+            <h2>{index + 1}. {concept.name}</h2>
+            <p class="mascot-concept-description">{concept.text}</p>
+            <button type="button" class="button secondary mascot-pick" data-mascot={concept.kind} data-mascot-name={concept.name} aria-pressed={index === 0}>Показати біля заголовка</button>
+          </article>)}
+        </div>
+      </section>
+    </main>
+    <SiteFooter />
+    <script>
+      const pickers = document.querySelectorAll<HTMLButtonElement>('.mascot-pick');
+      const heroes = document.querySelectorAll<HTMLElement>('[data-mascot-hero]');
+      const selectedName = document.querySelector('#selected-mascot');
+      pickers.forEach((button) => button.addEventListener('click', () => {
+        heroes.forEach((hero) => { hero.hidden = hero.dataset.mascotHero !== button.dataset.mascot; });
+        pickers.forEach((picker) => picker.setAttribute('aria-pressed', String(picker === button)));
+        if (selectedName) selectedName.textContent = button.dataset.mascotName || '';
+      }));
+      const motionButton = document.querySelector<HTMLButtonElement>('#mascot-motion');
+      motionButton?.addEventListener('click', () => {
+        const paused = document.body.classList.toggle('mascot-motion-paused');
+        motionButton.setAttribute('aria-pressed', String(paused));
+        motionButton.textContent = paused ? 'Відновити анімації' : 'Призупинити анімації';
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  .mascot-title-preview, .mascot-concept-grid { width: min(var(--max), 100%); margin: 0 auto; }
+  .mascot-title-preview { padding: 24px 28px; margin-bottom: 28px; background: rgba(13, 21, 28, 0.55); border: 1px solid var(--line); border-radius: 8px; }
+  .mascot-title-row { display: flex; align-items: center; gap: 24px; }
+  .mascot-hero-stage { width: 120px; height: 120px; flex-shrink: 0; }
+  .mascot-hero-choice { width: 100%; height: 100%; }
+  .mascot-sample-copy h2 { font-size: var(--text-title); line-height: var(--leading-title); margin-bottom: 0; }
+  .mascot-sample-copy .eyebrow { margin-bottom: 14px; }
+  .mascot-preview-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
+  .mascot-preview-controls p { margin: 0; color: var(--muted); }
+  .mascot-preview-controls strong { color: var(--green); }
+  .mascot-concept-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .mascot-concept { display: flex; flex-direction: column; padding: 24px; border: 1px solid var(--line); background: var(--panel); border-radius: 8px; }
+  .mascot-card-stage { width: 144px; height: 144px; margin: 0 auto 16px; }
+  .mascot-concept-tag { color: var(--green); font-size: var(--text-meta); margin-bottom: 8px; }
+  .mascot-concept h2 { font-size: var(--text-card); margin-bottom: 12px; }
+  .mascot-concept-description { color: var(--muted); margin-bottom: 24px; }
+  .mascot-pick { margin-top: auto; }
+  .mascot-pick[aria-pressed="true"] { border-color: var(--green); color: var(--green); background: rgba(79, 240, 163, 0.07); }
+  @media (max-width: 940px) { .mascot-concept-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) {
+    .mascot-concept-grid { grid-template-columns: 1fr; }
+    .mascot-title-preview { padding: 20px; }
+    .mascot-title-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .mascot-sample-copy h2 { font-size: var(--text-section); }
+    .mascot-preview-controls { align-items: stretch; flex-direction: column; }
+  }
+</style>

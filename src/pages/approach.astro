@@ -1,16 +1,22 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import PageIntroHeading from '../components/PageIntroHeading.astro';
 import { company, engagementModels } from '../data/site';
 ---
 
 <SiteLayout title={`Ways to Work Together | ${company.name}`} description="Discovery, delivery, fractional architecture and hourly or part-time DevOps consulting with clear scope, budgets and decision points." bodyClass="detail-page">
   <main id="main-content" class="detail-main">
       <section class="section approach" id="approach" aria-labelledby="approach-title">
-        <div class="section-heading wide">
-          <p class="eyebrow">Engagement models</p>
-          <h1 id="approach-title">Start with clarity, then build what can be operated</h1>
+        <div class="section-heading page-intro">
+          <PageIntroHeading titleId="approach-title" eyebrow="Engagement models" mascot="octopus">
+            Start with clarity, then build what can be operated
+          </PageIntroHeading>
         </div>
-        <div class="engagement-grid">
+        <nav class="page-toc" aria-label="On this page">
+          <a href="#engagement-models">Engagement models</a>
+          <a href="#working-together">Working together</a>
+        </nav>
+        <div class="engagement-grid page-anchor" id="engagement-models" tabindex="-1">
           {engagementModels.map((model) => (
             <article>
               <p>{model.duration}</p>
@@ -24,7 +30,7 @@ import { company, engagementModels } from '../data/site';
           <a class="inline-link" href="/contact/?topic=devops">Discuss hourly or part-time support →</a>
         </div>
       </section>
-      <section class="section approach-next" aria-labelledby="approach-next-title">
+      <section class="section approach-next" id="working-together" aria-labelledby="approach-next-title">
         <div class="section-heading wide">
           <p class="eyebrow">Working together</p>
           <h2 id="approach-next-title"><span class="heading-line">Agree the scope</span><span class="heading-line">Keep control of the next step</span></h2>

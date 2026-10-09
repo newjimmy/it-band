@@ -1,0 +1,19 @@
+---
+import TechMascot from './TechMascot.astro';
+
+interface Props {
+  titleId: string;
+  eyebrow: string;
+  mascot: 'relay' | 'fox' | 'whale' | 'octopus' | 'drone';
+}
+
+const { titleId, eyebrow, mascot } = Astro.props;
+---
+
+<div class="page-intro-heading">
+  <div class="page-intro-mascot" aria-hidden="true">
+    <TechMascot kind={mascot} instance={`${titleId}-mascot`} />
+  </div>
+  <p class="eyebrow">{eyebrow}</p>
+  <h1 id={titleId}><slot /></h1>
+</div>

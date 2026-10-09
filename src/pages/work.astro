@@ -1,21 +1,23 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import PageIntroHeading from '../components/PageIntroHeading.astro';
 import { company, projectCategories, technologies } from '../data/site';
 ---
 
 <SiteLayout title={`Experience & Technical Range | ${company.name}`} description="Architecture and delivery experience in enterprise cloud, banking, public sector, platforms, networks and application delivery." bodyClass="detail-page">
   <main id="main-content" class="detail-main">
       <section class="section work" id="work" aria-labelledby="work-title">
-        <div class="section-heading">
-          <p class="eyebrow">Experience map</p>
-          <h1 id="work-title">Architecture and delivery experience in complex environments</h1>
+        <div class="section-heading page-intro">
+          <PageIntroHeading titleId="work-title" eyebrow="Experience map" mascot="drone">
+            Architecture and delivery experience in complex environments
+          </PageIntroHeading>
           <p>Selected areas of professional experience brought to IT Band. These summaries describe prior engineering work and technical scope, not a list of IT Band client engagements. Client identities and confidential implementation details are omitted.</p>
         </div>
         <nav class="page-toc" aria-label="On this page">
-  <a href="#work">Experience map</a>
-  <a href="#technology">Technical range</a>
-</nav>
-        <div class="work-list">
+          <a href="#experience-map">Experience map</a>
+          <a href="#technology">Technical range</a>
+        </nav>
+        <div class="work-list page-anchor" id="experience-map" tabindex="-1">
           {projectCategories.map((category) => (
             <article class="work-item">
               <h2>{category.title}</h2>

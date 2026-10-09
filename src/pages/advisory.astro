@@ -1,14 +1,16 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import PageIntroHeading from '../components/PageIntroHeading.astro';
 import { company, advisoryFocus, recoveryLevels, recoverySteps } from '../data/site';
 ---
 
 <SiteLayout title={`Technical Advisory & Optimization | ${company.name}`} description="Tailored assessment, automation, performance optimization, troubleshooting and implementation across applications, cloud, networks and delivery workflows." bodyClass="detail-page">
   <main id="main-content" class="detail-main">
       <section class="section recovery" id="recovery" aria-labelledby="recovery-title">
-        <div class="section-heading wide">
-          <p class="eyebrow">Technical Advisory & Optimization</p>
-          <h1 id="recovery-title"><span class="heading-line">Understand the system</span><span class="heading-line">Improve what matters</span></h1>
+        <div class="section-heading page-intro">
+          <PageIntroHeading titleId="recovery-title" eyebrow="Technical Advisory & Optimization" mascot="fox">
+            <span class="heading-line">Understand the system</span><span class="heading-line">Improve what matters</span>
+          </PageIntroHeading>
           <p>
             Slow releases, manual work, recurring bugs or performance bottlenecks do not always
             need a crisis response. Get a coordinated assessment and a practical route to better

@@ -1,14 +1,16 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import PageIntroHeading from '../components/PageIntroHeading.astro';
 import { company, cloudPlatforms, services } from '../data/site';
 ---
 
 <SiteLayout title={`Services | ${company.name}`} description="Cloud architecture, Azure, AWS and OCI, hybrid networking, DevOps and platform engineering services." bodyClass="detail-page">
   <main id="main-content" class="detail-main">
       <section class="section services" id="services" aria-labelledby="services-title">
-        <div class="section-heading wide">
-          <p class="eyebrow">Services</p>
-          <h1 id="services-title">From architecture decisions to production delivery</h1>
+        <div class="section-heading page-intro">
+          <PageIntroHeading titleId="services-title" eyebrow="Services" mascot="whale">
+            From architecture decisions to production delivery
+          </PageIntroHeading>
           <p>
             Define the target architecture, connect cloud and on-prem networks, then implement
             the platform and delivery model. Architecture, networking and DevOps are parts of
@@ -17,11 +19,11 @@ import { company, cloudPlatforms, services } from '../data/site';
           </p>
         </div>
         <nav class="page-toc" aria-label="On this page">
-  <a href="#services">Expertise</a>
-  <a href="#clouds">Cloud platforms</a>
-  <a href="#problems">Problems we solve</a>
-</nav>
-        <div class="service-grid">
+          <a href="#expertise">Expertise</a>
+          <a href="#clouds">Cloud platforms</a>
+          <a href="#problems">Problems we solve</a>
+        </nav>
+        <div class="service-grid page-anchor" id="expertise" tabindex="-1">
           {services.map((service) => (
             <article class="service-card">
               <p class="service-eyebrow">{service.eyebrow}</p>

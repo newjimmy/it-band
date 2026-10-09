@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { company } from '../data/site';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import PageIntroHeading from '../components/PageIntroHeading.astro';
 
 const pageTitle = `Project inquiry | ${company.name}`;
 const canonicalURL = new URL('/contact/', Astro.site);
@@ -29,9 +30,10 @@ const description =
     <SiteHeader />
 
     <main class="inquiry-shell" id="main-content">
-      <section class="inquiry-hero" aria-labelledby="inquiry-title">
-        <p class="eyebrow">Start a conversation</p>
-        <h1 id="inquiry-title">Tell us what needs to be fixed, designed or delivered</h1>
+      <section class="inquiry-hero page-intro" aria-labelledby="inquiry-title">
+        <PageIntroHeading titleId="inquiry-title" eyebrow="Start a conversation" mascot="relay">
+          Tell us what needs to be fixed, designed or delivered
+        </PageIntroHeading>
         <p>
           Tell us about your Azure, AWS or OCI environment, architecture decisions, hybrid network
           or on-prem integration. We can also discuss Kubernetes, Terraform, CI/CD and platform

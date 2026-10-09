@@ -1,0 +1,180 @@
+---
+interface Props {
+  kind: 'relay' | 'fox' | 'whale' | 'octopus' | 'drone';
+  instance: string;
+}
+const { kind, instance } = Astro.props;
+const metal = `${instance}-metal`;
+const glow = `${instance}-glow`;
+---
+
+<svg class={`tech-mascot mascot-${kind}`} viewBox="0 0 160 160" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id={metal} x1="35" y1="20" x2="125" y2="145" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#bbf5ff" /><stop offset="0.48" stop-color="#45b8d5" /><stop offset="1" stop-color="#147188" />
+    </linearGradient>
+    <radialGradient id={glow}>
+      <stop stop-color="#39d7ff" stop-opacity="0.2" /><stop offset="1" stop-color="#39d7ff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <ellipse cx="80" cy="86" rx="72" ry="67" fill={`url(#${glow})`} />
+
+  {kind === 'relay' && <>
+    <ellipse cx="80" cy="145" rx="47" ry="5" fill="#39d7ff" opacity="0.12" />
+    <g class="rover-idle">
+      <path d="M50 43L46 23H36" stroke="#8bdde8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+      <circle class="mascot-status" cx="32" cy="23" r="5" fill="#f5b84b" />
+      <path d="M51 36H108L116 47V115H45V44L51 36Z" fill={`url(#${metal})`} stroke="#b4effa" stroke-width="2" />
+      <path d="M108 36L116 47H54L51 36" fill="#d4f5fa" opacity="0.55" />
+      <rect x="53" y="53" width="54" height="24" rx="4" fill="#082d3b" />
+      <path d="M68 59H99M68 65H95M68 71H99" stroke="#22758a" stroke-width="2" stroke-linecap="round" />
+      <path class="rover-scan" d="M68 65H99" stroke="#4ff0a3" stroke-width="3" stroke-linecap="round" />
+      <circle cx="61" cy="65" r="5" fill="#f5b84b" />
+      <circle cx="62" cy="63" r="2" fill="#fff3c8" />
+      <rect x="53" y="83" width="54" height="12" rx="3" fill="#164858" />
+      <path d="M59 89H88M59 103H88" stroke="#8de3ee" stroke-width="2" stroke-linecap="round" />
+      <rect x="53" y="97" width="54" height="12" rx="3" fill="#164858" />
+      <circle class="mascot-status" cx="100" cy="89" r="2.5" fill="#4ff0a3" />
+      <circle class="mascot-status packet-delay" cx="100" cy="103" r="2.5" fill="#4ff0a3" />
+      <path d="M45 84L32 94L23 86" stroke="#258ba2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M19 78L15 87L24 92L30 84" stroke="#ffcd78" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+      <g class="rover-arm">
+        <path d="M116 82L129 74L137 59" stroke="#258ba2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M132 48L130 57L141 63L147 55" stroke="#ffcd78" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+      </g>
+      <rect x="36" y="115" width="89" height="25" rx="12.5" fill="#102e3b" stroke="#59b6ca" stroke-width="2" />
+      <path class="rover-track" d="M47 117H113Q122 117 122 127Q122 137 113 137H47Q39 137 39 127Q39 117 47 117Z" stroke="#3592a8" stroke-width="4" stroke-dasharray="4 7" />
+      <circle cx="49" cy="127" r="6" fill="#22586b" stroke="#7bdce8" stroke-width="2" />
+      <circle cx="111" cy="127" r="6" fill="#22586b" stroke="#7bdce8" stroke-width="2" />
+      <path d="M67 126L72 130L67 134M80 134H89" stroke="#4ff0a3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+  </>}
+
+  {kind === 'fox' && <>
+    <ellipse class="mascot-shadow" cx="80" cy="143" rx="34" ry="5" fill="#f5b84b" opacity="0.12" />
+    <g class="mascot-hover fox-hover">
+      <g class="fox-tail">
+        <path d="M103 107Q148 112 139 67Q127 91 103 89Z" fill="#cf652e" stroke="#ffb574" stroke-width="2" />
+        <path d="M139 67Q127 91 115 93L126 105Q147 98 139 67Z" fill="#fbe1a3" />
+        <path class="mascot-circuit" d="M110 101H123L129 95V85" stroke="#4ff0a3" stroke-width="2" stroke-linecap="round" />
+      </g>
+      <path d="M58 88L55 127L66 139H100L107 125L100 88Z" fill="#e88842" stroke="#ffba7c" stroke-width="2" />
+      <path d="M72 99H91V120H72Z" fill="#16394a" />
+      <path d="M67 103H72M67 110H72M67 117H72M91 103H97M91 110H97M91 117H97" stroke="#79eec1" stroke-width="2" />
+      <path d="M77 105L82 109L77 114M85 114H88" stroke="#4ff0a3" stroke-width="2" stroke-linecap="round" />
+      <path d="M42 37L63 51L80 44L98 51L119 37L112 83L81 104L47 84Z" fill="#f5a25a" stroke="#ffd09a" stroke-width="2" stroke-linejoin="round" />
+      <path d="M47 43L52 67L62 56M113 43L108 67L98 56" fill="#6f3e32" />
+      <path d="M47 73L68 68L81 82L95 68L112 73L81 101Z" fill="#f9e1b4" />
+      <g class="mascot-blink">
+        <path d="M61 71L68 73M94 73L101 71" stroke="#16394a" stroke-width="4" stroke-linecap="round" />
+      </g>
+      <path d="M75 84H87L81 90Z" fill="#173b48" />
+      <path d="M65 137L60 140M98 137L103 140" stroke="#fbe1a3" stroke-width="7" stroke-linecap="round" />
+    </g>
+  </>}
+
+  {kind === 'whale' && <>
+    <g class="whale-packets" stroke="#4ff0a3" stroke-width="2">
+      <path d="M54 117V135H108V117" opacity="0.35" />
+      <rect class="mascot-status" x="46" y="130" width="16" height="13" rx="3" fill="#123c42" />
+      <rect class="mascot-status packet-delay" x="72" y="130" width="16" height="13" rx="3" fill="#123c42" />
+      <rect class="mascot-status packet-delay-more" x="99" y="130" width="16" height="13" rx="3" fill="#123c42" />
+    </g>
+    <g class="whale-swim">
+      <path d="M45 58Q39 45 53 36Q64 29 75 39Q88 23 102 34Q113 39 112 52Q135 56 130 81Q124 101 88 108Q51 112 36 95Q23 99 19 76Q33 83 38 77Q34 65 45 58Z" fill={`url(#${metal})`} stroke="#b5efff" stroke-width="2" />
+      <path d="M45 83Q77 111 113 87Q102 106 77 107Q54 105 45 94Z" fill="#d0f6ff" />
+      <path class="whale-fin" d="M77 91Q84 126 104 103Q86 111 89 88Z" fill="#258aa6" stroke="#7edded" stroke-width="2" />
+      <g class="mascot-blink"><path d="M53 67V70M97 64V67" stroke="#072a38" stroke-width="5" stroke-linecap="round" /></g>
+      <path d="M64 78Q74 84 83 77" stroke="#0d4658" stroke-width="3" stroke-linecap="round" />
+      <circle class="bubble-rise" cx="127" cy="37" r="5" stroke="#4ff0a3" stroke-width="2" />
+      <circle class="bubble-rise packet-delay" cx="141" cy="58" r="3" fill="#39d7ff" />
+    </g>
+  </>}
+
+  {kind === 'octopus' && <>
+    <ellipse class="mascot-shadow" cx="80" cy="144" rx="42" ry="5" fill="#b794f5" opacity="0.12" />
+    <g class="octopus-sway">
+      <g class="octopus-arms" stroke="#9679d8" stroke-width="9" stroke-linecap="round">
+        <path d="M53 91Q21 85 26 68M54 103Q20 111 29 129M65 111Q43 140 51 141M75 115Q67 140 71 141M86 115Q95 140 90 142M97 110Q120 137 112 141M106 103Q143 116 135 129M107 91Q138 83 134 67" />
+      </g>
+      <g class="mascot-status" fill="#4ff0a3">
+        <circle cx="26" cy="66" r="5" /><circle cx="29" cy="128" r="5" /><circle cx="134" cy="65" r="5" /><circle cx="135" cy="128" r="5" />
+      </g>
+      <path d="M47 76Q43 36 80 32Q117 36 113 76L105 108Q81 127 55 107Z" fill="#b494ed" stroke="#dbc4ff" stroke-width="2" />
+      <path d="M49 73Q81 84 111 70L105 108Q81 127 55 107Z" fill="#7e61b6" />
+      <g class="mascot-blink"><path d="M64 69V73M96 69V73" stroke="#201838" stroke-width="6" stroke-linecap="round" /></g>
+      <path d="M73 82Q81 87 89 82" stroke="#eee1ff" stroke-width="3" stroke-linecap="round" />
+      <rect x="64" y="94" width="32" height="15" rx="5" fill="#261d40" />
+      <path class="mascot-circuit" d="M69 101H75L79 97L84 105L89 101H93" stroke="#4ff0a3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+  </>}
+
+  {kind === 'drone' && <>
+    <ellipse class="mascot-shadow" cx="80" cy="143" rx="34" ry="5" fill="#39d7ff" opacity="0.12" />
+    <g class="mascot-hover drone-hover">
+      <g class="drone-orbit">
+        <ellipse cx="80" cy="80" rx="60" ry="31" transform="rotate(-30 80 80)" stroke="#39d7ff" stroke-width="2" opacity="0.6" />
+        <circle cx="28" cy="111" r="6" fill="#4ff0a3" stroke="#c4ffeb" stroke-width="2" />
+      </g>
+      <g class="drone-orbit drone-orbit-back">
+        <ellipse cx="80" cy="80" rx="58" ry="30" transform="rotate(37 80 80)" stroke="#4ff0a3" stroke-width="2" opacity="0.4" />
+        <circle cx="125" cy="108" r="4" fill="#39d7ff" />
+      </g>
+      <path d="M47 68L23 59L31 88L48 92M113 68L137 59L129 88L112 92" fill="#258ca5" stroke="#9deafb" stroke-width="2" stroke-linejoin="round" />
+      <path d="M80 38L112 57L121 83L109 110L80 122L51 110L39 83L48 57Z" fill={`url(#${metal})`} stroke="#baf2ff" stroke-width="2" />
+      <circle cx="80" cy="79" r="27" fill="#072a38" stroke="#59d4e6" stroke-width="3" />
+      <circle class="drone-eye" cx="80" cy="79" r="13" fill="#4ff0a3" />
+      <circle cx="84" cy="74" r="5" fill="#c6ffed" />
+      <path d="M70 111H90M70 48H90" stroke="#083649" stroke-width="3" stroke-linecap="round" />
+    </g>
+  </>}
+</svg>
+
+<style>
+  .tech-mascot { display: block; width: 100%; height: 100%; overflow: visible; }
+  .mascot-hover { animation: mascot-hover 4.8s ease-in-out infinite; }
+  .fox-hover { animation-duration: 5.4s; animation-delay: -1.4s; }
+  .drone-hover { animation-duration: 5.8s; }
+  .mascot-shadow { transform-origin: 80px 143px; animation: mascot-shadow 4.8s ease-in-out infinite; }
+  .mascot-blink { transform-box: fill-box; transform-origin: center; animation: mascot-blink 6.5s infinite; }
+  .mascot-status { animation: mascot-status 3.2s ease-in-out infinite; }
+  .mascot-packet { animation: mascot-packet 3.8s ease-in-out infinite; }
+  .mascot-circuit { stroke-dasharray: 35 12; animation: mascot-circuit 5s linear infinite; }
+  .packet-delay { animation-delay: -1.1s; }
+  .packet-delay-more { animation-delay: -2.2s; }
+  .fox-tail { transform-origin: 104px 105px; animation: fox-tail 5s ease-in-out infinite; }
+  .whale-swim { transform-origin: 80px 80px; animation: whale-swim 6s ease-in-out infinite; }
+  .whale-fin { transform-origin: 86px 91px; animation: whale-fin 3.5s ease-in-out infinite; }
+  .bubble-rise { animation: bubble-rise 4s ease-in-out infinite; }
+  .octopus-sway { transform-origin: 80px 90px; animation: octopus-sway 5.2s ease-in-out infinite; }
+  .octopus-arms { transform-origin: 80px 96px; animation: octopus-arms 3.8s ease-in-out infinite; }
+  .drone-orbit { transform-origin: 80px 80px; animation: drone-orbit 18s linear infinite; }
+  .drone-orbit-back { animation-duration: 24s; animation-direction: reverse; }
+  .drone-eye { transform-origin: 80px 79px; animation: drone-eye 4.5s ease-in-out infinite; }
+  .rover-idle { transform-origin: 80px 136px; animation: rover-idle 6s ease-in-out infinite; }
+  .rover-arm { transform-origin: 116px 82px; animation: rover-arm 5.2s ease-in-out infinite; }
+  .rover-scan { animation: rover-scan 4s ease-in-out infinite; }
+  .rover-track { animation: rover-track 8s linear infinite; }
+  @keyframes mascot-hover { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+  @keyframes mascot-shadow { 0%,100% { transform: scaleX(1); opacity: 0.12; } 50% { transform: scaleX(0.8); opacity: 0.07; } }
+  @keyframes mascot-blink { 0%,43%,47%,100% { transform: scaleY(1); } 45% { transform: scaleY(0.12); } }
+  @keyframes mascot-status { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+  @keyframes mascot-packet { 0%,100% { transform: translateY(4px); opacity: 0.3; } 50% { transform: translateY(-6px); opacity: 1; } }
+  @keyframes mascot-circuit { to { stroke-dashoffset: -47; } }
+  @keyframes fox-tail { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(5deg); } }
+  @keyframes whale-swim { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-6px) rotate(2deg); } }
+  @keyframes whale-fin { 0%,100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }
+  @keyframes bubble-rise { 0% { transform: translateY(6px); opacity: 0; } 30%,65% { opacity: 0.65; } 100% { transform: translateY(-11px); opacity: 0; } }
+  @keyframes octopus-sway { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-5px) rotate(2deg); } }
+  @keyframes octopus-arms { 0%,100% { transform: scaleX(0.97); } 50% { transform: scaleX(1.03); } }
+  @keyframes drone-orbit { to { transform: rotate(360deg); } }
+  @keyframes drone-eye { 0%,100% { transform: translateX(-3px); } 50% { transform: translateX(3px); } }
+  @keyframes rover-idle { 0%,100% { transform: rotate(-1deg); } 50% { transform: rotate(1deg); } }
+  @keyframes rover-arm { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(6deg); } }
+  @keyframes rover-scan { 0%,100% { transform: translateY(-4px); opacity: 0.55; } 50% { transform: translateY(4px); opacity: 1; } }
+  @keyframes rover-track { to { stroke-dashoffset: -44; } }
+  :global(.mascot-motion-paused) .tech-mascot :is(g, path, circle, ellipse, rect) { animation-play-state: paused !important; }
+  @media (prefers-reduced-motion: reduce) {
+    .tech-mascot :is(g, path, circle, ellipse, rect) { animation: none !important; }
+  }
+</style>
