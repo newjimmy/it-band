@@ -1,0 +1,29 @@
+---
+import { company } from '../data/site';
+
+const links = [
+  { href: '/services/', label: 'Services' },
+  { href: '/advisory/', label: 'Advisory' },
+  { href: '/work/', label: 'Work' },
+  { href: '/approach/', label: 'Approach' },
+  { href: '/contact/', label: 'Contact' },
+];
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label={`${company.name} home`}>
+    <span class="brand-mark">IB</span>
+    <span>
+      <strong>{company.name}</strong>
+      <small>{company.descriptor}</small>
+    </span>
+  </a>
+  <nav class="nav" aria-label="Main navigation">
+    {links.map((link) => (
+      <a href={link.href} aria-current={currentPath === link.href.replace(/\/$/, '') ? 'page' : undefined}>
+        {link.label}
+      </a>
+    ))}
+  </nav>
+</header>

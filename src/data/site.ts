@@ -1,6 +1,6 @@
 export const company = {
   name: 'IT Band',
-  descriptor: 'Hybrid Cloud, DevOps & Platform Engineering',
+  descriptor: 'Cloud Architecture, Networking & DevOps',
   location: 'Stockholm, Sweden',
   email: 'info@it-band.net',
 };
@@ -8,25 +8,80 @@ export const company = {
 export const proofPoints = [
   '20+ years in IT',
   '10+ years DevOps, cloud and automation',
-  'Azure, OCI and AWS',
+  'Azure, AWS and Oracle Cloud',
   'Kubernetes, Terraform and CI/CD',
   'Banking, public sector and enterprise delivery',
 ];
 
+export const overviewCards = [
+  {
+    href: '/services/',
+    label: 'Design & build',
+    title: 'Cloud, Networking & DevOps',
+    description: 'Architecture and hands-on delivery across Azure, AWS, OCI and on-prem. Explore the cloud, network and platform expertise.',
+    action: 'Explore services',
+  },
+  {
+    href: '/advisory/',
+    label: 'Assess, optimize & implement',
+    title: 'Technical Advisory & Optimization',
+    description: 'Find bottlenecks, resolve difficult issues and improve how systems are built and operated. From independent assessment to hands-on implementation.',
+    action: 'Explore tailored engagements',
+  },
+  {
+    href: '/work/',
+    label: 'Experience & capabilities',
+    title: 'Work & Technical Range',
+    description: 'Enterprise cloud, regulated environments, networks and application delivery. See the experience map and technologies behind the work.',
+    action: 'View experience',
+  },
+  {
+    href: '/approach/',
+    label: 'Flexible engagements',
+    title: 'Ways to Work Together',
+    description: 'Focused discovery, implementation, fractional architecture or hourly and part-time DevOps. Find the level of support that fits your team.',
+    action: 'Choose an approach',
+  },
+];
+
+export const cloudPlatforms = [
+  {
+    name: 'Microsoft Azure',
+    abbreviation: 'Azure',
+    summary:
+      'Cloud foundations and enterprise integration for workloads that need to connect with existing Microsoft and on-prem environments.',
+    focus: ['Landing zones and governance', 'Networking, identity and private access', 'AKS, Azure PaaS and infrastructure automation'],
+  },
+  {
+    name: 'Amazon Web Services',
+    abbreviation: 'AWS',
+    summary:
+      'Architecture and delivery for AWS environments, from secure foundations and network design to automated infrastructure and Kubernetes platforms.',
+    focus: ['Account structure and IAM', 'VPC design and hybrid connectivity', 'EKS, Terraform and delivery pipelines'],
+  },
+  {
+    name: 'Oracle Cloud Infrastructure',
+    abbreviation: 'OCI',
+    summary:
+      'Cloud architecture for enterprise and regulated workloads, with clear governance, network boundaries and integration with existing systems.',
+    focus: ['Compartments, IAM and landing zones', 'VCN design and on-prem connectivity', 'OKE, Terraform and OCI DevOps'],
+  },
+];
+
 export const services = [
   {
-    eyebrow: 'Cloud foundations',
-    title: 'Cloud Architecture & Landing Zones',
+    eyebrow: 'Architecture first',
+    title: 'Cloud & Solution Architecture',
     summary:
-      'Secure foundations for Azure, OCI and AWS with governance, IAM, network segmentation, environment strategy and operational guardrails.',
-    deliverables: ['Landing-zone design', 'IAM and network baseline', 'Environment model', 'Migration roadmap'],
+      'Turn business requirements and technical constraints into a practical target architecture across Azure, AWS, OCI and on-prem. Make security, resilience, cost and operational trade-offs explicit before implementation.',
+    deliverables: ['Current-state assessment and architecture review', 'Target architecture and decision records', 'Landing-zone and governance design', 'Migration roadmap and operating model'],
   },
   {
     eyebrow: 'Hybrid reality',
-    title: 'On-Prem Integration & Networking',
+    title: 'Hybrid Cloud & Network Architecture',
     summary:
-      'Connect modern cloud platforms with existing data centers, VMware estates, VPNs, DNS, routing, firewalls, identity and legacy operating models.',
-    deliverables: ['Hybrid connectivity', 'VPN and routing design', 'DNS and identity alignment', 'On-prem to cloud transition plan'],
+      'Design how cloud and data-center environments communicate: address space, routing, private connectivity, VPNs, DNS, segmentation, firewalls and identity. Integrate the infrastructure you already have instead of treating it as an afterthought.',
+    deliverables: ['Network topology and connectivity design', 'Routing, VPN and segmentation plan', 'DNS, firewall and identity integration', 'Resilient on-prem to cloud transition'],
   },
   {
     eyebrow: 'Delivery systems',
@@ -62,51 +117,132 @@ export const projectCategories = [
   {
     title: 'Enterprise Cloud & Migration',
     items: [
-      'Data center to Azure migration for large enterprise workloads',
-      'Swiss banking migration foundations on OCI and DRCC',
-      'Cloud architecture from scratch for regulated environments',
+      'Cloud foundations and migration work for retail, logistics, manufacturing and financial environments',
+      'Landing zones, reusable infrastructure modules and integration with existing data centers',
+      'Architecture reviews, network dependencies and staged migration planning',
     ],
+    technologies: ['Azure', 'OCI', 'Terraform', 'Bicep', 'Hybrid networking'],
   },
   {
     title: 'Public Sector & Regulated Platforms',
     items: [
-      'Secure OCI and Kubernetes platforms for public-sector workloads',
-      'Terraform-first governance, compartments, IAM and auditability',
-      'High availability and disaster recovery patterns for sensitive data',
+      'Engineering experience in taxation, government administration and public-safety environments',
+      'Cloud infrastructure, Kubernetes application platforms and repeatable VM provisioning',
+      'Identity boundaries, secrets management and controlled deployment workflows',
     ],
+    technologies: ['OCI', 'OKE', 'Terraform', 'Argo CD', 'WebLogic', 'OCI Vault'],
   },
   {
-    title: 'Azure PaaS, Power Platform & Integration',
+    title: 'Business Applications & Release Automation',
     items: [
-      'Azure resource modernization with Terraform, Terragrunt and Bicep',
-      'Private integration between Power Platform, AKS and .NET APIs',
-      'Azure DevOps pipelines for application and infrastructure delivery',
+      'Architecture and delivery workflows for business applications and enterprise integrations',
+      'CI/CD pipelines, release orchestration, environment promotion and customization workflows',
+      'Self-hosted build agents and infrastructure execution patterns for repeatable delivery',
     ],
+    technologies: ['Azure DevOps', 'Power Platform', '.NET', 'Terraform', 'VM Scale Sets'],
   },
   {
-    title: 'Network, Systems & On-Prem Foundations',
+    title: 'Cloud-Native Products & Platforms',
     items: [
-      'VMware ESXi/vCenter and mixed Linux/Windows operations',
-      'VPN, DNS, DHCP, routing, firewalling, reverse proxies and load balancers',
-      'Monitoring, backups, identity, patching and legacy operational controls',
+      'Infrastructure and deployment work for SaaS, gaming and data-driven application platforms',
+      'Kubernetes foundations, application delivery pipelines and environment configuration',
+      'Secrets, monitoring and operational practices for teams running containerized workloads',
     ],
+    technologies: ['AWS', 'Azure', 'Kubernetes', 'Docker', 'Helm', 'HashiCorp Vault'],
   },
   {
-    title: 'Product & Application Delivery',
+    title: 'Network & Security Infrastructure',
     items: [
-      'Backend, frontend, mobile and API delivery pipelines',
-      'Gaming, financial, PLM and enterprise application environments',
-      'Trusted engineering network for Python, Go, Java, PHP, .NET and frontend work',
+      'Cloud networking and platform integration for network-access and security applications',
+      'Private connectivity, VPNs, DNS, routing, firewalls and application load balancing',
+      'Infrastructure automation across cloud resources and existing network components',
     ],
+    technologies: ['F5 BIG-IP', 'Azure', 'AKS', 'Terraform', 'Ansible', 'VPN'],
   },
+  {
+    title: 'IoT & Connected Systems',
+    items: [
+      'Device simulation, telemetry flows and supporting application infrastructure',
+      'Cloud-backed data ingestion, APIs and visualization components',
+      'Development and test environments for validating connected-system behavior',
+    ],
+    technologies: ['Python', 'Docker', 'Telemetry', 'REST APIs', 'Azure Storage'],
+  },
+  {
+    title: 'Cloud Assessment & Cost Visibility',
+    items: [
+      'Structured reviews of infrastructure, delivery workflows, reliability and security posture',
+      'Automated cloud-cost analysis, reporting and distribution across subscriptions',
+      'Prioritized improvement roadmaps and infrastructure-as-code monitoring configuration',
+    ],
+    technologies: ['Azure Cost Management', 'Azure Functions', 'Power Automate', 'Pulumi', 'Python'],
+  },
+  {
+    title: 'Systems & On-Prem Foundations',
+    items: [
+      'Mixed Linux and Windows environments, virtualization and infrastructure operations',
+      'Identity integration, backups, patching and operational monitoring',
+      'Connecting legacy services to cloud-native delivery and platform practices',
+    ],
+    technologies: ['VMware ESXi', 'vCenter', 'Linux', 'Windows Server', 'DNS', 'Monitoring'],
+  },
+];
+
+export const advisoryFocus = [
+  { title: 'Delivery & automation', description: 'Streamline CI/CD, remove manual release steps and introduce repeatable infrastructure and application workflows.' },
+  { title: 'Performance & runtime', description: 'Investigate application, database and runtime bottlenecks. Agree measurable baselines before tuning or code changes.' },
+  { title: 'Reliability & troubleshooting', description: 'Trace recurring bugs, failing integrations and operational risks across application and infrastructure boundaries.' },
+  { title: 'Architecture & engineering practices', description: 'Review technical decisions, improve maintainability and implement practices that fit your systems and team.' },
+];
+
+export const recoveryLevels = [
+  {
+    number: '01',
+    title: 'Diagnose',
+    scope: 'Independent assessment',
+    outcome: 'Understand the current state, bottlenecks and highest-value improvements.',
+    deliverables: ['Evidence-backed findings and known limitations', 'Risk and business-impact priorities', 'Practical recommendations and a decision briefing'],
+    engagement: 'Initial assessment target: 1-2 weeks',
+  },
+  {
+    number: '02',
+    title: 'Shape the solution',
+    scope: 'Diagnosis + implementation options',
+    outcome: 'Choose a realistic route forward before committing to changes.',
+    deliverables: ['Everything in Diagnose', 'Solution options with trade-offs and effort estimates', 'Sequenced roadmap, owners, validation and rollback approach'],
+    engagement: 'Assessment + an agreed planning phase',
+  },
+  {
+    number: '03',
+    title: 'Implement together',
+    scope: 'Diagnosis + plan + hands-on support',
+    outcome: 'Give your team the expertise to execute the agreed plan.',
+    deliverables: ['Everything in Shape the solution', 'Pairing, implementation help and technical reviews', 'Validation, knowledge transfer and operational guidance'],
+    engagement: 'Agreed hours or delivery milestones',
+  },
+  {
+    number: '04',
+    title: 'Lead the delivery',
+    scope: 'End-to-end delivery within an agreed scope',
+    outcome: 'One technical lead from discovery through implementation and handover.',
+    deliverables: ['Everything in Implement together', 'Coordination of the agreed specialist team and delivery', 'Approved changes, acceptance checks, runbooks and handover'],
+    engagement: 'Scoped milestones with acceptance criteria',
+  },
+];
+
+export const recoverySteps = [
+  { title: 'Scope & access', description: 'Agree the goal, business impact, specialist roles, access boundaries, baseline and expected outputs.' },
+  { title: 'Investigate', description: 'Review the relevant code, release history, data flows, platform, network and security controls.' },
+  { title: 'Decide', description: 'Walk through the evidence, uncertainties and improvement options. Agree what happens next.' },
+  { title: 'Implement & verify', description: 'If commissioned, deliver approved changes, compare results against the agreed baseline and hand over what your team needs.' },
 ];
 
 export const engagementModels = [
   {
-    title: 'Architecture Discovery Sprint',
+    title: 'Architecture & Network Discovery',
     duration: '1-2 weeks',
     description:
-      'Current-state review, risks, target architecture, roadmap and practical next steps for cloud, platform or migration work.',
+      'Review current systems, network dependencies and business requirements. Leave with architecture options, identified risks and a prioritized implementation roadmap.',
   },
   {
     title: 'Build / Modernization Engagement',
@@ -115,16 +251,16 @@ export const engagementModels = [
       'Hands-on implementation of landing zones, CI/CD, Kubernetes, IaC, observability, security controls or hybrid connectivity.',
   },
   {
-    title: 'Fractional Platform Architect',
+    title: 'Fractional Cloud & Platform Architect',
     duration: 'Ongoing',
     description:
       'Senior architecture guidance, reviews, delivery acceleration, team mentoring and production-readiness support.',
   },
   {
-    title: 'Expert Team Extension',
-    duration: 'Project-based',
+    title: 'Hourly & Part-Time DevOps',
+    duration: 'Hourly / reserved capacity',
     description:
-      'DevOps-led delivery with trusted engineers for backend, APIs, integrations, automation and product implementation.',
+      'Senior hands-on help with cloud, pipelines, Terraform, Kubernetes and day-to-day delivery. Agree an hourly budget or recurring part-time capacity, priorities and reporting before work starts.',
   },
 ];
 

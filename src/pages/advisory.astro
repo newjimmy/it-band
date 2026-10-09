@@ -1,0 +1,109 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { company, advisoryFocus, recoveryLevels, recoverySteps } from '../data/site';
+---
+
+<SiteLayout title={`Technical Advisory & Optimization | ${company.name}`} description="Tailored assessment, automation, performance optimization, troubleshooting and implementation across applications, cloud, networks and delivery workflows." bodyClass="detail-page">
+  <main id="main-content" class="detail-main">
+      <section class="section recovery" id="recovery" aria-labelledby="recovery-title">
+        <div class="section-heading wide">
+          <p class="eyebrow">Technical Advisory & Optimization</p>
+          <h1 id="recovery-title"><span class="heading-line">Understand the system</span><span class="heading-line">Improve what matters</span></h1>
+          <p>
+            Slow releases, manual work, recurring bugs or performance bottlenecks do not always
+            need a crisis response. Get a coordinated assessment and a practical route to better
+            systems, from focused recommendations to approved implementation.
+          </p>
+        </div>
+        <nav class="page-toc" aria-label="On this page">
+  <a href="#recovery-levels">Engagement levels</a>
+  <a href="#recovery-process">How it works</a>
+  <a href="#recovery-access">Access & delivery</a>
+</nav>
+
+        <div class="problem-grid advisory-focus">
+          {advisoryFocus.map((area, index) => (
+            <article>
+              <span>0{index + 1}</span>
+              <h2>{area.title}</h2>
+              <p>{area.description}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="recovery-brief">
+          <div>
+            <h2><span class="heading-line">The right expertise</span><span class="heading-line">One coordinated engagement</span></h2>
+            <p>
+              IT Band can bring together senior specialists in application engineering,
+              databases, cloud, networking, DevOps, architecture and security, according to
+              the agreed scope. We look at the dependencies between disciplines, not only the
+              component where a symptom appears.
+            </p>
+          </div>
+          <div class="recovery-brief-note">
+            <p>Remote, on-site or together with your team</p>
+            <span>Specialist roles, availability and access are agreed before the engagement. Your team can execute changes where external access is restricted.</span>
+          </div>
+        </div>
+
+        <div class="recovery-options-heading" id="recovery-levels">
+          <h2>Four ways to engage</h2>
+          <p>Start with clarity. Choose how far you want us involved.</p>
+        </div>
+        <div class="recovery-grid">
+          {recoveryLevels.map((level) => (
+            <article class="recovery-card">
+              <div class="recovery-card-top">
+                <span class="recovery-number">{level.number}</span>
+                <p>{level.scope}</p>
+              </div>
+              <h3>{level.title}</h3>
+              <p class="recovery-outcome">{level.outcome}</p>
+              <ul>{level.deliverables.map((item) => <li>{item}</li>)}</ul>
+              <p class="recovery-engagement">{level.engagement}</p>
+            </article>
+          ))}
+        </div>
+        <p class="recovery-scope-note">
+          The 1-2 week assessment is a planning target for a focused scope once agreed access
+          is available, not a guaranteed resolution time. Scope, specialist capacity, fees,
+          schedule and deliverables are agreed upfront. Each next phase needs your approval;
+          the findings remain useful even if you implement them with another team.
+        </p>
+
+        <div class="recovery-process" id="recovery-process" aria-labelledby="recovery-process-title">
+          <h2 id="recovery-process-title">A clear process, with decision points</h2>
+          <ol>
+            {recoverySteps.map((step, index) => (
+              <li>
+                <span class="process-number" aria-hidden="true">0{index + 1}</span>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div class="recovery-guardrails" id="recovery-access">
+          <div>
+            <h2><span class="heading-line">Controlled access</span><span class="heading-line">Approved changes</span></h2>
+            <p>
+              Start with read-only, least-privilege access where feasible, or client-led
+              walkthroughs when direct access is not possible. Agree confidentiality, data
+              handling and access expiry. Production changes require your approval and an
+              agreed validation and rollback approach.
+            </p>
+          </div>
+          <div>
+            <a class="button primary" href="/contact/?topic=advisory">Discuss your improvement goals</a>
+            <p class="recovery-service-note">
+              A scoped consulting engagement, not a 24/7 emergency response service.
+              For an active outage or suspected breach, use your existing incident-response
+              process first.
+            </p>
+          </div>
+        </div>
+      </section>
+  </main>
+</SiteLayout>

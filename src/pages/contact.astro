@@ -1,11 +1,13 @@
 ---
 import '../styles/global.css';
 import { company } from '../data/site';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 
 const pageTitle = `Project inquiry | ${company.name}`;
 const canonicalURL = new URL('/contact/', Astro.site);
 const description =
-  'Start a structured architecture conversation about hybrid cloud, DevOps, Kubernetes, IaC, networking, on-prem integration or platform engineering.';
+  'Discuss cloud architecture, hybrid networking, technical assessment and optimization, or hourly and part-time DevOps consulting with IT Band.';
 ---
 
 <!doctype html>
@@ -23,30 +25,18 @@ const description =
     <title>{pageTitle}</title>
   </head>
   <body class="inquiry-page">
-    <header class="site-header">
-      <a class="brand" href="/" aria-label={`${company.name} home`}>
-        <span class="brand-mark">IB</span>
-        <span>
-          <strong>{company.name}</strong>
-          <small>{company.descriptor}</small>
-        </span>
-      </a>
-      <nav class="nav" aria-label="Main navigation">
-        <a href="/#services">Services</a>
-        <a href="/#work">Work</a>
-        <a href="/#approach">Approach</a>
-        <a href="/#contact">Contact</a>
-      </nav>
-    </header>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <SiteHeader />
 
-    <main class="inquiry-shell">
+    <main class="inquiry-shell" id="main-content">
       <section class="inquiry-hero" aria-labelledby="inquiry-title">
-        <p class="eyebrow">Architecture inquiry</p>
-        <h1 id="inquiry-title">Tell us what needs to be fixed, designed or delivered.</h1>
+        <p class="eyebrow">Start a conversation</p>
+        <h1 id="inquiry-title">Tell us what needs to be fixed, designed or delivered</h1>
         <p>
-          Use this form for hybrid cloud, DevOps, Kubernetes, CI/CD, Terraform, networking,
-          on-prem integration, observability, security or platform engineering work. The form opens
-          an email draft so you can review the message before sending.
+          Tell us about your Azure, AWS or OCI environment, architecture decisions, hybrid network
+          or on-prem integration. We can also discuss Kubernetes, Terraform, CI/CD and platform
+          engineering, a cross-discipline technical investigation, or hourly and part-time support.
+          The form opens an email draft so you can review the message before sending.
         </p>
       </section>
 
@@ -78,6 +68,8 @@ const description =
             <span>Topic</span>
             <select name="topic" required>
               <option value="">Select the closest topic</option>
+              <option value="Technical assessment / optimization">Technical assessment / optimization</option>
+              <option value="Hourly / part-time DevOps support">Hourly / part-time DevOps support</option>
               <option>Cloud architecture / landing zone</option>
               <option>On-prem to cloud migration</option>
               <option>Hybrid networking / VPN / DNS / connectivity</option>
@@ -87,6 +79,19 @@ const description =
               <option>Observability / reliability / security</option>
               <option>Team extension / delivery support</option>
               <option>Not sure yet</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Preferred engagement</span>
+            <select name="engagement">
+              <option>Help me choose</option>
+              <option>Diagnose: assessment and recommendations</option>
+              <option>Shape the solution: assessment and implementation options</option>
+              <option>Implement together: plan and hands-on support</option>
+              <option>Lead the delivery: scoped end-to-end implementation</option>
+              <option>Hourly / part-time support</option>
+              <option>Other architecture / delivery engagement</option>
             </select>
           </label>
 
@@ -132,17 +137,21 @@ const description =
 
           <p class="form-note">
             No data is stored by this static site. Submitting prepares an email draft on your device.
+            Describe the issue at a high level; do not include credentials, customer data or confidential logs.
           </p>
         </form>
 
         <aside class="inquiry-aside">
           <h2>Good first conversation</h2>
           <ul>
-            <li>Current platform and delivery process</li>
-            <li>Cloud, on-prem and network constraints</li>
+            <li>Business goals and architecture decisions</li>
+            <li>Azure, AWS, OCI and on-prem dependencies</li>
+            <li>Network topology, security and delivery constraints</li>
             <li>What is blocked, risky or too slow today</li>
-            <li>Whether you need architecture, implementation or rescue work</li>
+            <li>Whether you need assessment, optimization, troubleshooting or implementation</li>
+            <li>Internal delivery team, access boundaries and preferred level of help</li>
           </ul>
+          <p class="form-note">This is not a 24/7 emergency response channel. For an active incident, follow your existing incident-response process first.</p>
           <div class="aside-contact">
             <span>{company.location}</span>
             <a href={`mailto:${company.email}`}>{company.email}</a>
@@ -150,9 +159,20 @@ const description =
         </aside>
       </section>
     </main>
+    <SiteFooter />
 
     <script>
       const form = document.querySelector('#inquiry-form');
+      const inquiryTopic = new URLSearchParams(window.location.search).get('topic');
+      const topicSelect = form?.querySelector('select[name="topic"]');
+      const engagementSelect = form?.querySelector('select[name="engagement"]');
+      if (topicSelect instanceof HTMLSelectElement) {
+        if (inquiryTopic === 'advisory' || inquiryTopic === 'recovery') topicSelect.value = 'Technical assessment / optimization';
+        if (inquiryTopic === 'devops') {
+          topicSelect.value = 'Hourly / part-time DevOps support';
+          if (engagementSelect instanceof HTMLSelectElement) engagementSelect.value = 'Hourly / part-time support';
+        }
+      }
       form?.addEventListener('submit', (event) => {
         event.preventDefault();
         const data = new FormData(form);
@@ -164,6 +184,7 @@ const description =
           `Company: ${get('company')}`,
           `Preferred contact: ${get('contact')}`,
           `Topic: ${get('topic')}`,
+          `Preferred engagement: ${get('engagement')}`,
           `Current environment: ${get('environment')}`,
           `Timeline: ${get('timeline')}`,
           '',

@@ -1,0 +1,14 @@
+---
+import { company } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div>
+    <strong>Let's talk about your next step</strong>
+    <p>{company.location} · <a href={`mailto:${company.email}`}>{company.email}</a></p>
+  </div>
+  <div class="footer-actions">
+    <a class="button primary" href="/contact/">Start a conversation</a>
+    <a class="footer-home" href="/">Back to overview <span aria-hidden="true">↑</span></a>
+  </div>
+</footer>

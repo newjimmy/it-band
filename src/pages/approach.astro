@@ -1,0 +1,39 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { company, engagementModels } from '../data/site';
+---
+
+<SiteLayout title={`Ways to Work Together | ${company.name}`} description="Discovery, delivery, fractional architecture and hourly or part-time DevOps consulting with clear scope, budgets and decision points." bodyClass="detail-page">
+  <main id="main-content" class="detail-main">
+      <section class="section approach" id="approach" aria-labelledby="approach-title">
+        <div class="section-heading wide">
+          <p class="eyebrow">Engagement models</p>
+          <h1 id="approach-title">Start with clarity, then build what can be operated</h1>
+        </div>
+        <div class="engagement-grid">
+          {engagementModels.map((model) => (
+            <article>
+              <p>{model.duration}</p>
+              <h2>{model.title}</h2>
+              <span>{model.description}</span>
+            </article>
+          ))}
+        </div>
+        <div class="engagement-footer">
+          <p>Need expertise without a full project? Choose an agreed hourly budget or part-time capacity. Project timelines are indicative and confirmed after scoping.</p>
+          <a class="inline-link" href="/contact/?topic=devops">Discuss hourly or part-time support →</a>
+        </div>
+      </section>
+      <section class="section approach-next" aria-labelledby="approach-next-title">
+        <div class="section-heading wide">
+          <p class="eyebrow">Working together</p>
+          <h2 id="approach-next-title"><span class="heading-line">Agree the scope</span><span class="heading-line">Keep control of the next step</span></h2>
+          <p>Start with a conversation about the problem, your constraints and the outcome you need. Confirm deliverables, access, capacity and budget before work begins. Continue with a separate phase only when it makes sense for your team.</p>
+        </div>
+        <div class="page-next">
+          <div><h3>Need a tailored improvement engagement?</h3><p>Explore four levels of support, from independent assessment to scoped implementation.</p></div>
+          <a class="button secondary" href="/advisory/">Explore Technical Advisory</a>
+        </div>
+      </section>
+  </main>
+</SiteLayout>

@@ -1,0 +1,89 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { company, cloudPlatforms, services } from '../data/site';
+---
+
+<SiteLayout title={`Services | ${company.name}`} description="Cloud architecture, Azure, AWS and OCI, hybrid networking, DevOps and platform engineering services." bodyClass="detail-page">
+  <main id="main-content" class="detail-main">
+      <section class="section services" id="services" aria-labelledby="services-title">
+        <div class="section-heading wide">
+          <p class="eyebrow">Services</p>
+          <h1 id="services-title">From architecture decisions to production delivery</h1>
+          <p>
+            Define the target architecture, connect cloud and on-prem networks, then implement
+            the platform and delivery model. Architecture, networking and DevOps are parts of
+            the same system, not separate handoffs.
+            <a class="inline-link" href="/advisory/">Need a tailored assessment or optimization? Explore Technical Advisory →</a>
+          </p>
+        </div>
+        <nav class="page-toc" aria-label="On this page">
+  <a href="#services">Expertise</a>
+  <a href="#clouds">Cloud platforms</a>
+  <a href="#problems">Problems we solve</a>
+</nav>
+        <div class="service-grid">
+          {services.map((service) => (
+            <article class="service-card">
+              <p class="service-eyebrow">{service.eyebrow}</p>
+              <h2>{service.title}</h2>
+              <p>{service.summary}</p>
+              <ul>
+                {service.deliverables.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section class="section clouds" id="clouds" aria-labelledby="clouds-title">
+        <div class="section-heading wide">
+          <p class="eyebrow">Three clouds, one architectural approach</p>
+          <h2 id="clouds-title"><span class="heading-line">Choose the right cloud</span><span class="heading-line">Connect what matters</span></h2>
+          <p>
+            Start with your workloads, constraints and existing infrastructure. Work in one cloud
+            or connect multiple environments where there is a clear business need, without
+            forcing every workload into the same platform.
+          </p>
+        </div>
+        <div class="cloud-grid">
+          {cloudPlatforms.map((platform) => (
+            <article class="cloud-card">
+              <p class="cloud-label">{platform.abbreviation}</p>
+              <h3>{platform.name}</h3>
+              <p>{platform.summary}</p>
+              <ul>
+                {platform.focus.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section class="section problems" id="problems" aria-labelledby="problems-title">
+        <div class="section-heading">
+          <p class="eyebrow">Problems we solve</p>
+          <h2 id="problems-title">When cloud, legacy infrastructure and delivery pressure collide</h2>
+        </div>
+        <div class="problem-grid">
+          <article>
+            <span>01</span>
+            <h3>Cloud migration is stuck</h3>
+            <p>Old environments, unclear ownership and security constraints slow down the move to cloud.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>CI/CD exists, but releases still hurt</h3>
+            <p>Pipelines lack promotion flows, approvals, rollback strategy, policy checks and observability.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Infrastructure is hard to change safely</h3>
+            <p>Terraform, state, imports, networking and secrets need structure before teams can move faster.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Kubernetes needs an operating model</h3>
+            <p>Clusters are only useful when platform, security, ingress, logging and team workflows are clear.</p>
+          </article>
+        </div>
+      </section>
+  </main>
+</SiteLayout>
