@@ -3,7 +3,6 @@ export const company = {
   descriptor: 'Hybrid Cloud, DevOps & Platform Engineering',
   location: 'Stockholm, Sweden',
   email: 'info@it-band.net',
-  linkedin: 'https://www.linkedin.com/in/igor-dzyombak/',
 };
 
 export const proofPoints = [
