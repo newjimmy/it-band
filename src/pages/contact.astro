@@ -1,0 +1,183 @@
+---
+import '../styles/global.css';
+import { company } from '../data/site';
+
+const pageTitle = `Project inquiry | ${company.name}`;
+const canonicalURL = new URL('/contact/', Astro.site);
+const description =
+  'Start a structured architecture conversation about hybrid cloud, DevOps, Kubernetes, IaC, networking, on-prem integration or platform engineering.';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <title>{pageTitle}</title>
+  </head>
+  <body class="inquiry-page">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label={`${company.name} home`}>
+        <span class="brand-mark">IB</span>
+        <span>
+          <strong>{company.name}</strong>
+          <small>{company.descriptor}</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="/#services">Services</a>
+        <a href="/#work">Work</a>
+        <a href="/#approach">Approach</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="inquiry-shell">
+      <section class="inquiry-hero" aria-labelledby="inquiry-title">
+        <p class="eyebrow">Architecture inquiry</p>
+        <h1 id="inquiry-title">Tell us what needs to be fixed, designed or delivered.</h1>
+        <p>
+          Use this form for hybrid cloud, DevOps, Kubernetes, CI/CD, Terraform, networking,
+          on-prem integration, observability, security or platform engineering work. The form opens
+          an email draft so you can review the message before sending.
+        </p>
+      </section>
+
+      <section class="inquiry-layout" aria-label="Project inquiry form">
+        <form class="inquiry-form" id="inquiry-form" data-recipient={company.email}>
+          <div class="form-row">
+            <label>
+              <span>Name</span>
+              <input name="name" type="text" autocomplete="name" required />
+            </label>
+            <label>
+              <span>Work email</span>
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              <span>Company / organization</span>
+              <input name="company" type="text" autocomplete="organization" />
+            </label>
+            <label>
+              <span>Preferred contact</span>
+              <input name="contact" type="text" placeholder="Email, phone, LinkedIn or Teams" />
+            </label>
+          </div>
+
+          <label>
+            <span>Topic</span>
+            <select name="topic" required>
+              <option value="">Select the closest topic</option>
+              <option>Cloud architecture / landing zone</option>
+              <option>On-prem to cloud migration</option>
+              <option>Hybrid networking / VPN / DNS / connectivity</option>
+              <option>Kubernetes / platform engineering</option>
+              <option>CI/CD / GitOps / release automation</option>
+              <option>Terraform / Infrastructure as Code</option>
+              <option>Observability / reliability / security</option>
+              <option>Team extension / delivery support</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+
+          <div class="form-row">
+            <label>
+              <span>Current environment</span>
+              <input name="environment" type="text" placeholder="Azure, OCI, AWS, VMware, on-prem, Kubernetes..." />
+            </label>
+            <label>
+              <span>Timeline</span>
+              <select name="timeline">
+                <option>Exploring options</option>
+                <option>Need input this month</option>
+                <option>Active project</option>
+                <option>Urgent / production issue</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            <span>Short problem summary</span>
+            <textarea
+              name="summary"
+              rows="7"
+              placeholder="What is the business or technical problem? What is painful today? What would a good outcome look like?"
+              required
+            ></textarea>
+          </label>
+
+          <label>
+            <span>Useful constraints</span>
+            <textarea
+              name="constraints"
+              rows="4"
+              placeholder="Security, compliance, network, legacy systems, internal teams, budget, deadlines, preferred cloud or tooling."
+            ></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button class="button primary" type="submit">Prepare message</button>
+            <a class="button secondary" href={`mailto:${company.email}`}>Email directly</a>
+          </div>
+
+          <p class="form-note">
+            No data is stored by this static site. Submitting prepares an email draft on your device.
+          </p>
+        </form>
+
+        <aside class="inquiry-aside">
+          <h2>Good first conversation</h2>
+          <ul>
+            <li>Current platform and delivery process</li>
+            <li>Cloud, on-prem and network constraints</li>
+            <li>What is blocked, risky or too slow today</li>
+            <li>Whether you need architecture, implementation or rescue work</li>
+          </ul>
+          <div class="aside-contact">
+            <span>{company.location}</span>
+            <a href={`mailto:${company.email}`}>{company.email}</a>
+            <a href={company.linkedin} target="_blank" rel="noreferrer">LinkedIn profile</a>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <script>
+      const form = document.querySelector('#inquiry-form');
+      form?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const data = new FormData(form);
+        const get = (key) => String(data.get(key) || '').trim();
+        const subject = `[IT Band inquiry] ${get('topic') || 'Architecture conversation'}`;
+        const body = [
+          `Name: ${get('name')}`,
+          `Email: ${get('email')}`,
+          `Company: ${get('company')}`,
+          `Preferred contact: ${get('contact')}`,
+          `Topic: ${get('topic')}`,
+          `Current environment: ${get('environment')}`,
+          `Timeline: ${get('timeline')}`,
+          '',
+          'Short problem summary:',
+          get('summary'),
+          '',
+          'Useful constraints:',
+          get('constraints'),
+        ].join('\n');
+
+        const recipient = form.dataset.recipient || '';
+        const mailto = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailto;
+      });
+    </script>
+  </body>
+</html>

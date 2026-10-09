@@ -1,0 +1,188 @@
+---
+import '../styles/global.css';
+import {
+  company,
+  engagementModels,
+  projectCategories,
+  proofPoints,
+  services,
+  technologies,
+} from '../data/site';
+
+const pageTitle = `${company.name} | ${company.descriptor}`;
+const canonicalURL = new URL('/', Astro.site);
+const socialImageURL = new URL('/images/hybrid-cloud-architecture.png', Astro.site);
+const description =
+  'Senior-led hybrid cloud, DevOps, network, Kubernetes, Terraform, CI/CD, observability and migration consulting across on-prem, Azure, OCI and AWS.';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={socialImageURL} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label={`${company.name} home`}>
+        <span class="brand-mark">IB</span>
+        <span>
+          <strong>{company.name}</strong>
+          <small>{company.descriptor}</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-media" aria-hidden="true">
+          <img src="/images/hybrid-cloud-architecture.png" alt="" loading="eager" />
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Hybrid cloud, DevOps, network and platform architecture</p>
+          <h1>Production-grade delivery across on-prem, Azure, OCI and AWS.</h1>
+          <p class="hero-copy">
+            {company.name} designs and implements secure cloud foundations, Kubernetes platforms,
+            CI/CD, Infrastructure as Code, observability and hybrid connectivity for teams that
+            cannot afford fragile infrastructure.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="/contact/">Book an architecture call</a>
+            <a class="button secondary" href="/contact/">Send a project inquiry</a>
+            <a class="button secondary" href="#services">View services</a>
+          </div>
+        </div>
+        <div class="proof-strip" aria-label="Experience highlights">
+          {proofPoints.map((point) => <span>{point}</span>)}
+        </div>
+      </section>
+
+      <section class="section problems" aria-labelledby="problems-title">
+        <div class="section-heading">
+          <p class="eyebrow">Problems we solve</p>
+          <h2 id="problems-title">When cloud, legacy infrastructure and delivery pressure collide.</h2>
+        </div>
+        <div class="problem-grid">
+          <article>
+            <span>01</span>
+            <h3>Cloud migration is stuck</h3>
+            <p>Old environments, unclear ownership and security constraints slow down the move to cloud.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>CI/CD exists, but releases still hurt</h3>
+            <p>Pipelines lack promotion flows, approvals, rollback strategy, policy checks and observability.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Infrastructure is hard to change safely</h3>
+            <p>Terraform, state, imports, networking and secrets need structure before teams can move faster.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Kubernetes needs an operating model</h3>
+            <p>Clusters are only useful when platform, security, ingress, logging and team workflows are clear.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section services" id="services" aria-labelledby="services-title">
+        <div class="section-heading wide">
+          <p class="eyebrow">Services</p>
+          <h2 id="services-title">Architecture and implementation for serious production environments.</h2>
+          <p>
+            The strongest work is where enterprise infrastructure meets modern delivery: data centers,
+            cloud, Kubernetes, networks, security controls, CI/CD, observability and team enablement.
+          </p>
+        </div>
+        <div class="service-grid">
+          {services.map((service) => (
+            <article class="service-card">
+              <p class="service-eyebrow">{service.eyebrow}</p>
+              <h3>{service.title}</h3>
+              <p>{service.summary}</p>
+              <ul>
+                {service.deliverables.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section work" id="work" aria-labelledby="work-title">
+        <div class="section-heading">
+          <p class="eyebrow">Experience map</p>
+          <h2 id="work-title">Categorized from real project history, not invented service copy.</h2>
+        </div>
+        <div class="work-list">
+          {projectCategories.map((category) => (
+            <article class="work-item">
+              <h3>{category.title}</h3>
+              <ul>
+                {category.items.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section approach" id="approach" aria-labelledby="approach-title">
+        <div class="section-heading wide">
+          <p class="eyebrow">Engagement models</p>
+          <h2 id="approach-title">Start with clarity, then build what can be operated.</h2>
+        </div>
+        <div class="engagement-grid">
+          {engagementModels.map((model) => (
+            <article>
+              <p>{model.duration}</p>
+              <h3>{model.title}</h3>
+              <span>{model.description}</span>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section tech" aria-labelledby="tech-title">
+        <div class="section-heading wide">
+          <p class="eyebrow">Technical range</p>
+          <h2 id="tech-title">Cloud-native depth backed by network and systems foundations.</h2>
+        </div>
+        <div class="tech-cloud">
+          {technologies.map((technology) => <span>{technology}</span>)}
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">Bring the messy architecture problem.</h2>
+          <p>
+            Useful first topics: current platform, cloud provider, on-prem constraints, delivery pain,
+            timeline, and whether you need architecture, implementation, rescue work or team extension.
+          </p>
+        </div>
+        <div class="contact-card">
+          <span>{company.location}</span>
+          <a href={`mailto:${company.email}`}>{company.email}</a>
+          <a href="/contact/">Open project inquiry form</a>
+          <a href={company.linkedin} target="_blank" rel="noreferrer">LinkedIn profile</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

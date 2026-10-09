@@ -1,10 +1,12 @@
 # Dependencies
 /node_modules
 
-# Jekyll build output
+# Build output
 /_site
+/dist
 /.jekyll-cache
 /.jekyll-metadata
+/.astro
 
 # Environment files
 .env
